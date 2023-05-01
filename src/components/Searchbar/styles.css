@@ -1,0 +1,20 @@
+.input-search {
+  max-height: 38px;
+}
+
+.input-has-error {
+  border-color: #f5222d;
+}
+
+.input-error-feedback {
+  opacity: 0;
+  height: 0;
+  font-size: 12px;
+  transition: opacity 0.5s;
+}
+
+.input-error-feedback.active {
+  opacity: 1;
+  height: auto;
+  color: #f5222d;
+}
