@@ -1,16 +1,16 @@
 import axios, { ResponseType } from "axios";
 
-interface IRequestConfig {
-  params?: any;
-  data?: any;
+interface IRequestConfig<P, D> {
+  params?: P;
+  data?: D;
   responseType?: ResponseType;
 }
 
 export const apiManager = {
-  async get<T = any>(url: string, config: IRequestConfig = {}) {
+  async get<P = {}, D = {}>(url: string, config: IRequestConfig<P, D> = {}) {
     const { params, responseType } = config;
     const headers = getHeaders();
-    return axios.get<T>(url, { params, headers, responseType });
+    return axios.get<D>(url, { params, headers, responseType });
   },
 };
 

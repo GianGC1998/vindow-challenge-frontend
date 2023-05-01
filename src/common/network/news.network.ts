@@ -7,16 +7,21 @@ export const searchNews = async (
   query: string,
   page: number
 ): Promise<SearchResponse> => {
-  const { data } = await apiManager.get<SearchResponse>(
-    `${apiUrls.SEARCH_URL}/NewsSearchAPI`,
+  const { data } = await apiManager.get<
     {
-      params: {
-        q: query,
-        pageNumber: page,
-        pageSize: PAGE_SIZE_DEFAULT,
-        withThumbnails: true,
-      },
-    }
-  );
+      q: string;
+      pageNumber: number;
+      pageSize: number;
+      withThumbnails: boolean;
+    },
+    SearchResponse
+  >(`${apiUrls.SEARCH_URL}/NewsSearchAPI`, {
+    params: {
+      q: query,
+      pageNumber: page,
+      pageSize: PAGE_SIZE_DEFAULT,
+      withThumbnails: true,
+    },
+  });
   return data;
 };
